@@ -6,6 +6,8 @@ You've been asked to imagine you're the new Analytics Engineer at **WestGen Ener
 
 WestGen's Future Energy team currently receives raw telemetry from these assets but has no structured analytics layer. Your job is to build the first version of one — end to end — on **Databricks Free Edition**, and then present your work to the team.
 
+**Task repository:** everything you need — this brief and the data generation script — is at **https://github.com/wvlt/der-analytics-assessment** (public, no GitHub account needed).
+
 ---
 
 ## Time expectation
@@ -32,7 +34,7 @@ Suggested split (indicative only):
    CREATE SCHEMA IF NOT EXISTS westgen.raw;
    CREATE VOLUME IF NOT EXISTS westgen.raw.landing;
    ```
-3. Create a new notebook and run the provided script `data/generate_data.py` (copy its contents into a notebook cell, or upload it). It writes three CSV files into your landing Volume (edit `OUT_DIR` at the top if you named yours differently):
+3. Create a new notebook and run the provided script — `data/generate_data.py` in the task repository (https://github.com/wvlt/der-analytics-assessment) — by copying its contents into a notebook cell, or uploading the file. It writes three CSV files into your landing Volume (edit `OUT_DIR` at the top if you named yours differently):
    - `asset_metadata.csv` — the DER asset register (~12 rows)
    - `telemetry.csv` — 5-minute interval telemetry for all assets over 14 days (~48,000 rows)
    - `market_prices.csv` — 30-minute wholesale energy prices for the same period
