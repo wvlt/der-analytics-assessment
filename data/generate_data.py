@@ -13,12 +13,15 @@ import os
 SEED = 42
 rng = np.random.default_rng(SEED)
 
-# On Databricks: create the catalog/schema/volume FIRST (see README setup),
-# then point this at your landing Volume. Edit if you named yours differently.
+# Create the catalog/schema/volume FIRST (see README setup), then run this.
+# Edit this path if you named your catalog/schema/volume differently.
 OUT_DIR = "/Volumes/westgen/raw/landing"
-if not os.path.exists("/databricks"):
-    OUT_DIR = "./westgen_data"  # local fallback for testing
+if not os.path.isdir(OUT_DIR):
+    OUT_DIR = "./westgen_data"
     os.makedirs(OUT_DIR, exist_ok=True)
+    print(f"NOTE: /Volumes/westgen/raw/landing not found — writing to {os.path.abspath(OUT_DIR)} instead.")
+    print("If you're on Databricks, create the Volume first (see README Setup step 2) and re-run,")
+    print("or edit OUT_DIR above to match your own catalog/schema/volume names.")
 
 DAYS = 14
 START = pd.Timestamp("2026-08-01 00:00:00")  # local time, AWST (UTC+8)
